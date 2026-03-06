@@ -1,10 +1,10 @@
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import React from "react";
 
-const TabsLayout = () => {
+export default function TabLayout() {
   const { colors } = useTheme();
+
   return (
     <Tabs
       screenOptions={{
@@ -12,40 +12,76 @@ const TabsLayout = () => {
         tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
           backgroundColor: colors.surface,
-          borderTopWidth: 1,
           borderTopColor: colors.border,
-          height: 90,
-          paddingBottom: 30,
-          paddingTop: 10,
+          paddingBottom: 5,
+          paddingTop: 5,
+          height: 60,
         },
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
         },
-        headerShown: false,
+        headerStyle: {
+          backgroundColor: colors.surface,
+        },
+        headerTintColor: colors.text,
+        headerShadowVisible: false,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Todos",
+          title: "Home",
+          headerTitle: "Digital Library",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="flash-outline" size={size} color={color} />
+            <Ionicons name="home" size={size} color={color} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name="settings"
+        name="search"
         options={{
-          title: "Settings",
+          title: "Search",
+          headerTitle: "Search Books",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
+            <Ionicons name="search" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="ebooks"
+        options={{
+          title: "E-Library",
+          headerTitle: "E-Library",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="library" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="mybooks"
+        options={{
+          title: "My Books",
+          headerTitle: "My Collection",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="bookmark" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          headerTitle: "My Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />
     </Tabs>
   );
-};
-
-export default TabsLayout;
+}
